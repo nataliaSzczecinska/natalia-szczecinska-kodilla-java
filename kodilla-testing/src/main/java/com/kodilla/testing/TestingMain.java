@@ -1,39 +1,31 @@
 package com.kodilla.testing;
 
 import com.kodilla.testing.calculator.Calculator;
+import com.kodilla.testing.collection.OddNumbersExterminator;
 import com.kodilla.testing.user.SimpleUser;
+
+import java.util.*;
 
 public class TestingMain {
     public static void main(String[] args) {
-        SimpleUser simpleUser = new SimpleUser("theForumUser");
+        List<Integer> integerList = new ArrayList<>();
+        List<Integer> integerEvenList = new ArrayList<>();
+        OddNumbersExterminator exterminator = new OddNumbersExterminator();
 
-        String result = simpleUser.getUserName();
-
-        if (result.equals("theForumUser")) {
-            System.out.println("test OK");
-        } else {
-            System.out.println("Error!");
+        for (int i = 0 ; i < 10 ; i++) {
+            integerList.add(i + 1);
         }
 
-        System.out.println("Test - pierwszy test jednostkowy:");
+        integerEvenList = exterminator.exterminate(integerList);
 
-        //Test kalkulatora
-        Calculator calculator = new Calculator();
-
-        int calculatorResults = calculator.add(5, 4);
-
-        if (calculatorResults == (5 + 4)){
-            System.out.println("Adding works fine");
-        } else {
-            System.out.println("Error! Adding does not work fine");
+        System.out.println("First List");
+        for (Integer list : integerList ) {
+            System.out.println(list);
         }
 
-        calculatorResults = calculator.subtract(5, 4);
-
-        if (calculatorResults == (5 - 4)){
-            System.out.println("Subtraction works fine");
-        } else {
-            System.out.println("Error! Subtraction does not work fine");
+        System.out.println("Second List");
+        for (Integer list : integerEvenList ) {
+            System.out.println(list);
         }
     }
 }
