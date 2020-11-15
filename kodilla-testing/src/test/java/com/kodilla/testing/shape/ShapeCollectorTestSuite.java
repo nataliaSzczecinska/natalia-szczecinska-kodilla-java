@@ -34,11 +34,15 @@ public class ShapeCollectorTestSuite {
             ShapeCollector shapeCollector = new ShapeCollector();
 
             //when
-            Shape shape = new Circle(1.0);
-            shapeCollector.addFigure(shape);
+            Shape shape1 = new Circle(1.0);
+            Shape shape2 = new Square(1.0);
+            Shape shape3 = new Triangle(2.0, 4.5);
+            shapeCollector.addFigure(shape1);
+            shapeCollector.addFigure(shape2);
+            shapeCollector.addFigure(shape3);
 
             //then
-            Assertions.assertEquals(1, shapeCollector.getShapeCollectorQuantity());
+            Assertions.assertEquals(3, shapeCollector.getShapeCollectorQuantity());
         }
 
         @DisplayName("Removing test if figure does not exist")
@@ -53,6 +57,7 @@ public class ShapeCollectorTestSuite {
 
             //then
             Assertions.assertFalse(result);
+            Assertions.assertEquals(0, shapeCollector.getShapeCollectorQuantity());
         }
 
         @DisplayName("Removing test if figure exists")
@@ -80,15 +85,24 @@ public class ShapeCollectorTestSuite {
         void testGetFigure() {
             //given
             ShapeCollector shapeCollector = new ShapeCollector();
-            Shape shape = new Circle(1.0);
-            shapeCollector.addFigure(shape);
+            Shape shape1 = new Circle(1.0);
+            Shape shape2 = new Square(1.0);
+            Shape shape3 = new Triangle(2.0, 4.5);
+            shapeCollector.addFigure(shape1);
+            shapeCollector.addFigure(shape2);
+            shapeCollector.addFigure(shape3);
 
             //when
-            Shape retrievedShape;
-            retrievedShape = shapeCollector.getFigure(0);
+            Shape retrievedShape1, retrievedShape2, retrievedShape3;
+            retrievedShape1 = shapeCollector.getFigure(0);
+            retrievedShape2 = shapeCollector.getFigure(1);
+            retrievedShape3 = shapeCollector.getFigure(2);
+
 
             //then
-            Assertions.assertEquals(shape, retrievedShape);
+            Assertions.assertEquals(shape1, retrievedShape1);
+            Assertions.assertEquals(shape2, retrievedShape2);
+            Assertions.assertEquals(shape3, retrievedShape3);
 
         }
 
@@ -107,7 +121,6 @@ public class ShapeCollectorTestSuite {
 
             //then
             Assertions.assertEquals(text, allFigures);
-
         }
     }
 }
