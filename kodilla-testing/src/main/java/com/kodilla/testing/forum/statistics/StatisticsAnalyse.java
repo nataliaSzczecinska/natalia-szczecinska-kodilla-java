@@ -1,6 +1,6 @@
 package com.kodilla.testing.forum.statistics;
 
-import java.util.Objects;
+import java.util.*;
 
 public class StatisticsAnalyse {
     private int usersAmount = 0;
@@ -58,7 +58,34 @@ public class StatisticsAnalyse {
     }
 
     public void calculateAdvStatistics(Statistics statistics){
-        //
+        List<String> users = statistics.usersNames();
+        usersAmount = users.size();
+        if (usersAmount == 0) {
+            postsAmount = 0;
+            commentsAmount = 0;
+            avgPostsPerUser = 0.0;
+            avgCommentsPerUser = 0.0;
+            avgCommentsPerPost = 0.0;
+        } else {
+            postsAmount = statistics.postsCount();
+            if (postsAmount == 0) {
+                commentsAmount = 0;
+                avgPostsPerUser = 0.0;
+                avgCommentsPerUser = 0.0;
+                avgCommentsPerPost = 0.0;
+            } else {
+                commentsAmount = statistics.commentsCount();
+                if (commentsAmount == 0) {
+                    avgPostsPerUser = 1.0 * postsAmount / usersAmount;
+                    avgCommentsPerUser = 0.0;
+                    avgCommentsPerPost = 0.0;
+                } else {
+                    avgPostsPerUser = 1.0 * postsAmount / usersAmount;
+                    avgCommentsPerUser = 1.0 * commentsAmount / usersAmount;
+                    avgCommentsPerPost = 1.0 * commentsAmount / postsAmount;
+                }
+            }
+        }
     }
 
     public void showStatistics() {

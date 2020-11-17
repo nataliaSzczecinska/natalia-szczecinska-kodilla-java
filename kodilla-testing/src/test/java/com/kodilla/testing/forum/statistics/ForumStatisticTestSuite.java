@@ -1,20 +1,17 @@
 package com.kodilla.testing.forum.statistics;
 
-import com.kodilla.testing.library.LibraryDatabase;
-import com.kodilla.testing.weather.stub.Temperature;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.*;
 import org.mockito.junit.jupiter.MockitoExtension;
 import java.util.*;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 public class ForumStatisticTestSuite {
 
-    private int  testCounter = 0;
+    private static int testCounter = 0;
 
     static List<String> userGenerate(int number) {
         List<String> userNameList = new ArrayList<>();
@@ -32,7 +29,6 @@ public class ForumStatisticTestSuite {
     @BeforeAll
     public static void beforeAllTests() {
         statisticsMock = mock(Statistics.class);
-        when(statisticsMock.usersNames()).thenReturn(userGenerate(anyInt()));
         System.out.println("This is the beginning of tests.");
     }
 
@@ -54,14 +50,22 @@ public class ForumStatisticTestSuite {
         void testCalculateAdvStatisticsFor0Posts(){
             //Given
             StatisticsAnalyse statisticsAnalyse = new StatisticsAnalyse();
+            when(statisticsMock.usersNames()).thenReturn(userGenerate(10));
             when(statisticsMock.postsCount()).thenReturn(0);
 
             //When
             statisticsAnalyse.calculateAdvStatistics(statisticsMock);
             int postNumber = statisticsAnalyse.getPostsAmount();
+            double commentsPerPost = statisticsAnalyse.getAvgCommentsPerPost();
+            double postsPerUser = statisticsAnalyse.getAvgPostsPerUser();
+            double commentsPerUser = statisticsAnalyse.getAvgCommentsPerUser();
 
             //Then
             Assertions.assertEquals(0, postNumber);
+            Assertions.assertEquals(0.0, commentsPerPost);
+            Assertions.assertEquals(0.0, postsPerUser);
+            Assertions.assertEquals(0.0, commentsPerUser);
+            verify(statisticsMock, never()).commentsCount();
         }
 
         @Test
@@ -69,7 +73,7 @@ public class ForumStatisticTestSuite {
             //Given
             StatisticsAnalyse statisticsAnalyse = new StatisticsAnalyse();
             when(statisticsMock.postsCount()).thenReturn(1000);
-            when(statisticsMock.usersNames()).thenReturn(userGenerate(anyInt()));
+            when(statisticsMock.usersNames()).thenReturn(userGenerate(10));
 
             //When
             statisticsAnalyse.calculateAdvStatistics(statisticsMock);
@@ -88,14 +92,21 @@ public class ForumStatisticTestSuite {
             //Given
             StatisticsAnalyse statisticsAnalyse = new StatisticsAnalyse();
             when(statisticsMock.usersNames()).thenReturn(userGenerate(10));
-            when(statisticsMock.postsCount()).thenReturn(0);
+            when(statisticsMock.postsCount()).thenReturn(1000);
+            when(statisticsMock.commentsCount()).thenReturn(0);
 
             //When
             statisticsAnalyse.calculateAdvStatistics(statisticsMock);
-            int postNumber = statisticsAnalyse.getPostsAmount();
+            int postNumber = statisticsAnalyse.getCommentsAmount();
+            double commentsPerPost = statisticsAnalyse.getAvgCommentsPerPost();
+            double postsPerUser = statisticsAnalyse.getAvgPostsPerUser();
+            double commentsPerUser = statisticsAnalyse.getAvgCommentsPerUser();
 
             //Then
             Assertions.assertEquals(0, postNumber);
+            Assertions.assertEquals(0.0, commentsPerPost);
+            Assertions.assertEquals(100.0, postsPerUser);
+            Assertions.assertEquals(0.0, commentsPerUser);
         }
 
         @Test
@@ -110,11 +121,84 @@ public class ForumStatisticTestSuite {
             statisticsAnalyse.calculateAdvStatistics(statisticsMock);
             int postNumber = statisticsAnalyse.getPostsAmount();
             int commentNumber = statisticsAnalyse.getCommentsAmount();
-            double commentsPerPosts = statisticsAnalyse.getAvgCommentsPerPost();
+            double commentsPerPost = statisticsAnalyse.getAvgCommentsPerPost();
+            double postsPerUser = statisticsAnalyse.getAvgPostsPerUser();
+            double commentsPerUser = statisticsAnalyse.getAvgCommentsPerUser();
 
             //Then
             Assertions.assertEquals(1000, postNumber);
             Assertions.assertEquals(500, commentNumber);
+            Assertions.assertEquals(0.5, commentsPerPost);
+            Assertions.assertEquals(100.0, postsPerUser);
+            Assertions.assertEquals(50.0, commentsPerUser);
+        }
+
+        @Test
+        void testCalculateAdvStatisticsForPostsLessThenComments(){
+            //Given
+            StatisticsAnalyse statisticsAnalyse = new StatisticsAnalyse();
+            when(statisticsMock.usersNames()).thenReturn(userGenerate(10));
+            when(statisticsMock.postsCount()).thenReturn(1000);
+            when(statisticsMock.commentsCount()).thenReturn(2000);
+
+            //When
+            statisticsAnalyse.calculateAdvStatistics(statisticsMock);
+            int postNumber = statisticsAnalyse.getPostsAmount();
+            int commentNumber = statisticsAnalyse.getCommentsAmount();
+            double commentsPerPost = statisticsAnalyse.getAvgCommentsPerPost();
+            double postsPerUser = statisticsAnalyse.getAvgPostsPerUser();
+            double commentsPerUser = statisticsAnalyse.getAvgCommentsPerUser();
+
+            //Then
+            Assertions.assertEquals(1000, postNumber);
+            Assertions.assertEquals(2000, commentNumber);
+            Assertions.assertEquals(2.0, commentsPerPost);
+            Assertions.assertEquals(100, postsPerUser);
+            Assertions.assertEquals(200, commentsPerUser);
+        }
+    }
+
+    @Nested
+    @DisplayName("User tests")
+    class testUser {
+        @Test
+        void testCalculateAdvStatisticsFor0User(){
+            //Given
+            StatisticsAnalyse statisticsAnalyse = new StatisticsAnalyse();
+            when(statisticsMock.usersNames()).thenReturn(userGenerate(0));
+
+            //When
+            statisticsAnalyse.calculateAdvStatistics(statisticsMock);
+            int userNumber = statisticsAnalyse.getUsersAmount();
+            int postNumber = statisticsAnalyse.getPostsAmount();
+            int commentNumber = statisticsAnalyse.getCommentsAmount();
+            double commentsPerPost = statisticsAnalyse.getAvgCommentsPerPost();
+            double postsPerUser = statisticsAnalyse.getAvgPostsPerUser();
+            double commentsPerUser = statisticsAnalyse.getAvgCommentsPerUser();
+
+            //Then
+            Assertions.assertEquals(0, userNumber);
+            Assertions.assertEquals(0, postNumber);
+            Assertions.assertEquals(0, commentNumber);
+            Assertions.assertEquals(0.0, commentsPerPost);
+            Assertions.assertEquals(0.0, postsPerUser);
+            Assertions.assertEquals(0.0, commentsPerUser);
+            verify(statisticsMock, never()).commentsCount();
+            verify(statisticsMock, never()).postsCount();
+        }
+
+        @Test
+        void testCalculateAdvStatisticsFor100User(){
+            //Given
+            StatisticsAnalyse statisticsAnalyse = new StatisticsAnalyse();
+            when(statisticsMock.usersNames()).thenReturn(userGenerate(100));
+
+            //When
+            statisticsAnalyse.calculateAdvStatistics(statisticsMock);
+            int userNumber = statisticsAnalyse.getUsersAmount();
+
+            //Then
+            Assertions.assertEquals(100, userNumber);
         }
     }
 }
