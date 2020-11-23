@@ -3,6 +3,7 @@ package com.kodilla.stream;
 //import com.kodilla.stream.beautifier.PoemBeautifuler;
 //import com.kodilla.stream.iterate.NumbersGenerator;
 //import com.kodilla.stream.lambda.*;
+import com.kodilla.stream.array.ArrayOperations;
 import com.kodilla.stream.book.Book;
 import com.kodilla.stream.book.BookDirectory;
 import com.kodilla.stream.forumuser.Forum;
