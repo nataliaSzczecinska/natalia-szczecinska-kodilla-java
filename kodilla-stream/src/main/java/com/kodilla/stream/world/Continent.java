@@ -5,10 +5,11 @@ import java.util.*;
 
 public final class Continent {
 
-    private final  List <Country> countries = new ArrayList<>();
+    private final  List <Country> countries;
     private final String continentName;
 
-    public Continent(String continentName) {
+    public Continent(String continentName, List<Country> countries) {
+        this.countries = countries;
         this.continentName = continentName;
     }
 
@@ -16,7 +17,11 @@ public final class Continent {
 
         List<Country> resultList = new ArrayList();
 
-        if (continentName.equals("Africa")) {
+        resultList = countries;
+
+        return resultList;
+
+        /*if (continentName.equals("Africa")) {
             countries.add(new Country("Algieria", new BigDecimal("42228408")));
             countries.add(new Country("Angola", new BigDecimal("30809787")));
             countries.add(new Country("Cameroon", new BigDecimal("25216267")));
@@ -96,6 +101,6 @@ public final class Continent {
             return resultList;
         }
 
-        return resultList;
+        return resultList;*/
     }
 }

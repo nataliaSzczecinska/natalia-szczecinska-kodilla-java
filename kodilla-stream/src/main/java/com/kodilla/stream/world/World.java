@@ -8,21 +8,17 @@ import java.util.stream.Collectors;
 
 public final class World {
 
-    private final List<Continent> continents = new ArrayList<>();
+    private final List<Continent> continents;
 
-    public World() {
-        continents.add(new Continent("Africa"));
-        continents.add(new Continent("Asia"));
-        continents.add(new Continent("Europe"));
-        continents.add(new Continent("North America"));
-        continents.add(new Continent("South America"));
+    public World(List<Continent> continents) {
+        this.continents = continents;
     }
 
     public List<Continent> getContinents() {
         List<Continent> continentList = new ArrayList<>();
         continentList = continents;
 
-        return continents;
+        return continentList;
     }
 
     public BigDecimal getPeopleQuantity() {
