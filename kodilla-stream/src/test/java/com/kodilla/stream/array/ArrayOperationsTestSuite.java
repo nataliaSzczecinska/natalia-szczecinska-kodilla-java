@@ -21,7 +21,7 @@ public class ArrayOperationsTestSuite {
     }
 
     @Mock
-    private ArrayOperations arrayOperationsMock = Mockito.mock(ArrayOperations.class);
+    private ArrayOperations arrayOperationsMock; //= Mockito.mock(ArrayOperations.class);
 
     @Test
     void testGetAverage() {
