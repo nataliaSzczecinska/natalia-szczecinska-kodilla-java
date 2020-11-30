@@ -4,22 +4,18 @@ import java.util.*;
 
 public class FlightFinder {
 
-    public void findFilght(Flight flight) throws RouteNotFoundException {
+    public boolean findFilght(Flight flight) throws RouteNotFoundException {
         Map<String, Boolean> flightArrivalMap = arrivalAirportMap();
         String arrivalAirport = flight.getArrivalAirport();
         boolean isExist = false;
+        isExist = flightArrivalMap.containsKey(arrivalAirport);
 
-            for (Map.Entry<String, Boolean> entry : flightArrivalMap.entrySet()) {
-                if (arrivalAirport.equals(entry.getKey())) {
-                    System.out.println("There is a possibility to arrive to " + entry.getKey());
-                    isExist = true;
-                    break;
-                }
-            }
-            if (!isExist) {
-                throw new RouteNotFoundException("Exception! " +
-                        "This arrival airport do not exist");
-            }
+        if (!isExist) {
+            throw new RouteNotFoundException("Exception! " +
+                    "This arrival airport do not exist");
+        }
+
+        return isExist;
     }
 
     public Map<String, Boolean> arrivalAirportMap(){
@@ -41,10 +37,14 @@ public class FlightFinder {
         List <Flight> flightList = new ArrayList <>();
         flightList.add(new Flight("London", "Lodz"));
         flightList.add(new Flight("London", "Berlin"));
+        boolean isFlightExist;
 
         for (Flight flights : flightList) {
             try {
-                flightFinder.findFilght(flights);
+                isFlightExist = flightFinder.findFilght(flights);
+                if(isFlightExist) {
+                    System.out.println("This arrival airport exists!");
+                }
             } catch (RouteNotFoundException exception) {
                 System.out.println(exception);
             } finally {
