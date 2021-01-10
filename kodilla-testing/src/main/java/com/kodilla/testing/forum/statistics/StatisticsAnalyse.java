@@ -57,7 +57,7 @@ public class StatisticsAnalyse {
         return Objects.hash(usersAmount, postsAmount, commentsAmount, avgPostsPerUser, avgCommentsPerUser, avgCommentsPerPost);
     }
 
-    public void calculateAdvStatistics(Statistics statistics){
+    public void calculateAdvStatistics(Statistics statistics) {
         List<String> users = statistics.usersNames();
         usersAmount = users.size();
         if (usersAmount == 0) {

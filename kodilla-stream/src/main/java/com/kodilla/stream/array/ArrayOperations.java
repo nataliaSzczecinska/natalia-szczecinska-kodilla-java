@@ -16,6 +16,6 @@ public interface ArrayOperations {
                 .map(n -> numbers[n])
                 .average();
 
-           return avg.getAsDouble();
+        return avg.getAsDouble();
     }
 }

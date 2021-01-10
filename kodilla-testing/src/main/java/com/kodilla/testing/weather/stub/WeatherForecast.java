@@ -2,14 +2,14 @@ package com.kodilla.testing.weather.stub;
 
 import java.util.*;
 
-public class WeatherForecast{
+public class WeatherForecast {
     private Temperature temperatures;
 
     public WeatherForecast(Temperature temperatures) {
         this.temperatures = temperatures;
     }
 
-    public Map<String, Double> calculateForecast(){
+    public Map<String, Double> calculateForecast() {
         Map<String, Double> resultMap = new HashMap<>();
 
         for (Map.Entry<String, Double> temperature :
@@ -22,7 +22,7 @@ public class WeatherForecast{
         return resultMap;
     }
 
-    public double averageTemp(){
+    public double averageTemp() {
         double avg = 0.0;
 
         for (Map.Entry<String, Double> temp :
@@ -33,7 +33,7 @@ public class WeatherForecast{
         return avg / temperatures.getTemperatures().size();
     }
 
-    public double medianTemp(){
+    public double medianTemp() {
         double median = 0.0;
         List<Double> tempList = new ArrayList<>();
 
@@ -46,15 +46,15 @@ public class WeatherForecast{
         int changeQuantity;
         do {
             changeQuantity = 0;
-            for (int i = 0 ; i < tempList.size() - 1; i++){
-                if (tempList.get(i) > tempList.get(i + 1)){
+            for (int i = 0; i < tempList.size() - 1; i++) {
+                if (tempList.get(i) > tempList.get(i + 1)) {
                     double value = tempList.get(i);
                     tempList.set(i, tempList.get(i + 1));
                     tempList.set(i + 1, value);
                     changeQuantity++;
                 }
             }
-        }while(changeQuantity != 0);
+        } while (changeQuantity != 0);
 
         int value = tempList.size() / 2;
         if (tempList.size() % 2 == 0) {

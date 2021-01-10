@@ -11,9 +11,9 @@ import static org.junit.jupiter.api.Assertions.*;
 public class ArrayOperationsTestSuite {
 
     int[] tableGenerator(int number) {
-        int [] tab = new int[number];
+        int[] tab = new int[number];
 
-        for (int i = 0 ; i < number ; i++) {
+        for (int i = 0; i < number; i++) {
             tab[i] = i + 1;
         }
 
@@ -26,8 +26,8 @@ public class ArrayOperationsTestSuite {
     @Test
     void testGetAverage() {
         //Given
-        int [] table = tableGenerator(10);
-        double expectedAvg =  5.5;
+        int[] table = tableGenerator(10);
+        double expectedAvg = 5.5;
 
         //When
         double result = ArrayOperations.getAverage(table);

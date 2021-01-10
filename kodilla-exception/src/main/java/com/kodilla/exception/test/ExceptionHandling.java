@@ -6,7 +6,7 @@ public class ExceptionHandling {
         SecondChallenge secondChallenge = new SecondChallenge();
         String text = new String();
 
-        try  {
+        try {
             text = secondChallenge.probablyIWillThrowException(x, y);
         } catch (Exception e) {
             System.out.println("There is an exception");

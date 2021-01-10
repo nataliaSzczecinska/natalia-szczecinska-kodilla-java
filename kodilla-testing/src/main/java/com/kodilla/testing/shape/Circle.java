@@ -2,7 +2,7 @@ package com.kodilla.testing.shape;
 
 import java.util.Objects;
 
-public class Circle implements Shape{
+public class Circle implements Shape {
     private final double pi = 3.14;
     private double radius;
 

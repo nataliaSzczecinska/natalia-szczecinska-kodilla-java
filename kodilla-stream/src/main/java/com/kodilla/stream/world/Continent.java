@@ -5,7 +5,7 @@ import java.util.*;
 
 public final class Continent {
 
-    private final  List <Country> countries;
+    private final List<Country> countries;
     private final String continentName;
 
     public Continent(String continentName, List<Country> countries) {

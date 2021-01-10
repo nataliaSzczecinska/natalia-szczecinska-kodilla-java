@@ -4,6 +4,7 @@ import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.*;
 import org.mockito.junit.jupiter.MockitoExtension;
+
 import java.util.*;
 
 import static org.mockito.Mockito.*;
@@ -16,7 +17,7 @@ public class ForumStatisticTestSuite {
     static List<String> userGenerate(int number) {
         List<String> userNameList = new ArrayList<>();
 
-        for (int i = 0 ; i < number ; i++){
+        for (int i = 0; i < number; i++) {
             userNameList.add("User" + i);
         }
 
@@ -47,7 +48,7 @@ public class ForumStatisticTestSuite {
     @DisplayName("Posts tests")
     class testPosts {
         @Test
-        void testCalculateAdvStatisticsFor0Posts(){
+        void testCalculateAdvStatisticsFor0Posts() {
             //Given
             StatisticsAnalyse statisticsAnalyse = new StatisticsAnalyse();
             when(statisticsMock.usersNames()).thenReturn(userGenerate(10));
@@ -69,7 +70,7 @@ public class ForumStatisticTestSuite {
         }
 
         @Test
-        void testCalculateAdvStatisticsFor1000Posts(){
+        void testCalculateAdvStatisticsFor1000Posts() {
             //Given
             StatisticsAnalyse statisticsAnalyse = new StatisticsAnalyse();
             when(statisticsMock.postsCount()).thenReturn(1000);
@@ -88,7 +89,7 @@ public class ForumStatisticTestSuite {
     @DisplayName("Comments tests")
     class testComments {
         @Test
-        void testCalculateAdvStatisticsFor0Comments(){
+        void testCalculateAdvStatisticsFor0Comments() {
             //Given
             StatisticsAnalyse statisticsAnalyse = new StatisticsAnalyse();
             when(statisticsMock.usersNames()).thenReturn(userGenerate(10));
@@ -110,7 +111,7 @@ public class ForumStatisticTestSuite {
         }
 
         @Test
-        void testCalculateAdvStatisticsForPostsMoreThenComments(){
+        void testCalculateAdvStatisticsForPostsMoreThenComments() {
             //Given
             StatisticsAnalyse statisticsAnalyse = new StatisticsAnalyse();
             when(statisticsMock.usersNames()).thenReturn(userGenerate(10));
@@ -134,7 +135,7 @@ public class ForumStatisticTestSuite {
         }
 
         @Test
-        void testCalculateAdvStatisticsForPostsLessThenComments(){
+        void testCalculateAdvStatisticsForPostsLessThenComments() {
             //Given
             StatisticsAnalyse statisticsAnalyse = new StatisticsAnalyse();
             when(statisticsMock.usersNames()).thenReturn(userGenerate(10));
@@ -162,7 +163,7 @@ public class ForumStatisticTestSuite {
     @DisplayName("User tests")
     class testUser {
         @Test
-        void testCalculateAdvStatisticsFor0User(){
+        void testCalculateAdvStatisticsFor0User() {
             //Given
             StatisticsAnalyse statisticsAnalyse = new StatisticsAnalyse();
             when(statisticsMock.usersNames()).thenReturn(userGenerate(0));
@@ -188,7 +189,7 @@ public class ForumStatisticTestSuite {
         }
 
         @Test
-        void testCalculateAdvStatisticsFor100User(){
+        void testCalculateAdvStatisticsFor100User() {
             //Given
             StatisticsAnalyse statisticsAnalyse = new StatisticsAnalyse();
             when(statisticsMock.usersNames()).thenReturn(userGenerate(100));

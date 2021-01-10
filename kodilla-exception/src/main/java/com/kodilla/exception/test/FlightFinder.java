@@ -18,7 +18,7 @@ public class FlightFinder {
         return isExist;
     }
 
-    public Map<String, Boolean> arrivalAirportMap(){
+    public Map<String, Boolean> arrivalAirportMap() {
         Map<String, Boolean> maps = new HashMap<>();
 
         maps.put("Berlin", true);
@@ -34,7 +34,7 @@ public class FlightFinder {
 
     public static void main(String[] args) {
         FlightFinder flightFinder = new FlightFinder();
-        List <Flight> flightList = new ArrayList <>();
+        List<Flight> flightList = new ArrayList<>();
         flightList.add(new Flight("London", "Lodz"));
         flightList.add(new Flight("London", "Berlin"));
         boolean isFlightExist;
@@ -42,7 +42,7 @@ public class FlightFinder {
         for (Flight flights : flightList) {
             try {
                 isFlightExist = flightFinder.findFilght(flights);
-                if(isFlightExist) {
+                if (isFlightExist) {
                     System.out.println("This arrival airport exists!");
                 }
             } catch (RouteNotFoundException exception) {

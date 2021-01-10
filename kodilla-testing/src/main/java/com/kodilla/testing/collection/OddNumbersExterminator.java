@@ -3,10 +3,10 @@ package com.kodilla.testing.collection;
 import java.util.*;
 
 public class OddNumbersExterminator {
-    public List<Integer> exterminate(List<Integer> numbers){
+    public List<Integer> exterminate(List<Integer> numbers) {
         List<Integer> evenNumberList = new ArrayList<>();
 
-        if (numbers.isEmpty()){
+        if (numbers.isEmpty()) {
             System.out.println("The given list is empty");
             return evenNumberList;
         } else {

@@ -7,7 +7,7 @@ public class FirstChallenge {
         double result = 0;
 
         try {
-            result = a / b ;
+            result = a / b;
             if (result == Double.POSITIVE_INFINITY || result == Double.NEGATIVE_INFINITY) {
                 throw new ArithmeticException();
             }
@@ -23,6 +23,7 @@ public class FirstChallenge {
 
     /**
      * This main can throw an ArithmeticException!!!
+     *
      * @param args
      */
     public static void main(String[] args) {

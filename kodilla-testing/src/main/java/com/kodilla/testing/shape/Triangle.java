@@ -2,7 +2,7 @@ package com.kodilla.testing.shape;
 
 import java.util.Objects;
 
-public class Triangle implements Shape{
+public class Triangle implements Shape {
     private double triangleSide1;
     //private double triangleSide2;
     //private double triangleSide3;
@@ -10,7 +10,7 @@ public class Triangle implements Shape{
     //private double triangleHightLength2;
     //private double triangleHightLength3;
 
-    public Triangle (double triangleSide1, double triangleHightLength1) {
+    public Triangle(double triangleSide1, double triangleHightLength1) {
         this.triangleSide1 = triangleSide1;
         this.triangleHightLength1 = triangleHightLength1;
     }

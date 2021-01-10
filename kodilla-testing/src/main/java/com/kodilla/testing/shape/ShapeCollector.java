@@ -25,10 +25,10 @@ public class ShapeCollector {
         return null;
     }
 
-    public String showFigures(){
+    public String showFigures() {
         String text = new String();
-        for (int i = 0 ; i < figureList.size() ; i++) {
-            if (i  == figureList.size() - 1) {
+        for (int i = 0; i < figureList.size(); i++) {
+            if (i == figureList.size() - 1) {
                 text += figureList.get(i);
             } else {
                 text += figureList.get(i) + "\n";
@@ -37,7 +37,7 @@ public class ShapeCollector {
         return text;
     }
 
-    public int getShapeCollectorQuantity(){
+    public int getShapeCollectorQuantity() {
         return figureList.size();
     }
 }

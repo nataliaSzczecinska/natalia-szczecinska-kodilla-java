@@ -3,6 +3,7 @@ package com.kodilla.stream;
 //import com.kodilla.stream.beautifier.PoemBeautifuler;
 //import com.kodilla.stream.iterate.NumbersGenerator;
 //import com.kodilla.stream.lambda.*;
+
 import com.kodilla.stream.array.ArrayOperations;
 import com.kodilla.stream.book.Book;
 import com.kodilla.stream.book.BookDirectory;
@@ -20,7 +21,7 @@ public class StreamMain {
 
         Forum forum = new Forum();
 
-        Map<Integer, ForumUser>  theForumUserMap = forum.getUserList().stream()
+        Map<Integer, ForumUser> theForumUserMap = forum.getUserList().stream()
                 .filter(forumUser -> forumUser.getSex() == 'M')
                 .filter(forumUser -> forumUser.getBirthday().isBefore(LocalDate.now().minusYears(20)))
                 .filter(forumUser -> forumUser.getPublishPosts() > 0)

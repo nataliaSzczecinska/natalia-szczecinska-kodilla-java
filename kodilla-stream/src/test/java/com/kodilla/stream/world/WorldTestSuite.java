@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class WorldTestSuite {
 
-    private World preparedDataTest(){
+    private World preparedDataTest() {
         //countries Africa
         List<Country> africaCountries = new ArrayList<>();
         africaCountries.add(new Country("Algieria", new BigDecimal("42228408")));
