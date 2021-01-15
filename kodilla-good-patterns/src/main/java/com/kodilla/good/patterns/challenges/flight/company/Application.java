@@ -8,9 +8,9 @@ public class Application {
 
         System.out.println("Database have " + flightDatabase.getFlightMap().size() + " flights\n");
         displayFlights.displayList("***The flights from Athens***",
-                searchFlight.flightListFrom("Athens", flightDatabase));
+                searchFlight.flightFromToListFrom("Athens", flightDatabase));
         displayFlights.displayList("***The flights to Athens***",
-                searchFlight.flightListTo("Athens", flightDatabase));
+                searchFlight.flightFromToListTo("Athens", flightDatabase));
         displayFlights.displayList("***The directly flights from Athens to Rome***",
                 searchFlight.searchDirectFlightFromTo("Athens",
                         "Rome",

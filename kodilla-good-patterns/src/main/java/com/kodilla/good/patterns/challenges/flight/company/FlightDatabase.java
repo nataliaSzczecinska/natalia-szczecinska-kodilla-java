@@ -4,17 +4,19 @@ import java.util.*;
 
 public class FlightDatabase {
     private Map<String, Flight> flightMap;
+    private Set<FlightFromTo> flightFromToSet;
 
     public FlightDatabase() {
         this.flightMap = createFlightMap();
+        this.flightFromToSet = createFlightSet();
+    }
+
+    public FlightDatabase(Set<FlightFromTo> flightFromToSet) {
+        this.flightFromToSet = flightFromToSet;
     }
 
     public FlightDatabase(Map<String, Flight> flightMap) {
         this.flightMap = flightMap;
-    }
-
-    public Map<String, Flight> getFlightMap() {
-        return flightMap;
     }
 
     private Map<String, Flight> createFlightMap() {
@@ -95,5 +97,45 @@ public class FlightDatabase {
         createdFlightMap.put(flight12.getFlightID(), flight12);
 
         return createdFlightMap;
+    }
+
+    private Set<FlightFromTo> createFlightSet(){
+        Set<FlightFromTo> createdFlightSet = new LinkedHashSet<>();
+
+        FlightFromTo flight1 = new FlightFromTo("Athens","Madrid");
+        FlightFromTo flight2 = new FlightFromTo("Athens","London");
+        FlightFromTo flight3 = new FlightFromTo("Athens","Rome");
+        FlightFromTo flight4 = new FlightFromTo("Madrid","Athens");
+        FlightFromTo flight5 = new FlightFromTo("London", "Athens");
+        FlightFromTo flight6 = new FlightFromTo("Rome","Athens");
+        FlightFromTo flight7 = new FlightFromTo("Rio de Janeiro", "Washington, D.C.");
+        FlightFromTo flight8 = new FlightFromTo("Warsaw","Rio de Janeiro");
+        FlightFromTo flight9 = new FlightFromTo("Madrid","Warsaw");
+        FlightFromTo flight10 = new FlightFromTo("Rome","Berlin");
+        FlightFromTo flight11 = new FlightFromTo("Berlin","Warsaw");
+        FlightFromTo flight12 = new FlightFromTo("Berlin","Athens");
+
+        createdFlightSet.add(flight1);
+        createdFlightSet.add(flight2);
+        createdFlightSet.add(flight3);
+        createdFlightSet.add(flight4);
+        createdFlightSet.add(flight5);
+        createdFlightSet.add(flight6);
+        createdFlightSet.add(flight7);
+        createdFlightSet.add(flight8);
+        createdFlightSet.add(flight9);
+        createdFlightSet.add(flight10);
+        createdFlightSet.add(flight11);
+        createdFlightSet.add(flight12);
+
+        return createdFlightSet;
+    }
+
+    public Map<String, Flight> getFlightMap() {
+        return flightMap;
+    }
+
+    public Set<FlightFromTo> getFlightFromToSet() {
+        return flightFromToSet;
     }
 }
