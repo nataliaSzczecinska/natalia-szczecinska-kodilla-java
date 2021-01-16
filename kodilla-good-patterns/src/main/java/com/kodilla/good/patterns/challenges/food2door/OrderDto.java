@@ -27,14 +27,14 @@ public class OrderDto {
 
     @Override
     public String toString() {
-        String text;
+        String text = user + ", the order ";
 
         if (isOrderBeRealised) {
-            text = " will be realised";
+            text += "will be realised";
         } else {
-            text = " will not be realised";
+            text += "will not be realised";
         }
-        
-        return "The order prepared by" + user + text;
+
+        return text;
     }
 }

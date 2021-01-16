@@ -4,38 +4,20 @@ import java.util.Objects;
 
 public class Product {
     private String name;
-    private String productID;
-    private Units unit;
-    private double availableQuality;
+    private String id;
+    private double amount;
 
-    public Product(String name, String productID, Units unit, double availableQuality) {
+    public Product(String name, String id, double amount) {
         this.name = name;
-        this.productID = productID;
-        this.unit = unit;
-        this.availableQuality = availableQuality;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getProductID() {
-        return productID;
-    }
-
-    public Units getUnit() {
-        return unit;
-    }
-
-    public double getAvailableQuality() {
-        return availableQuality;
+        this.id = id;
+        this.amount = amount;
     }
 
     @Override
     public String toString() {
-        return "Product: " + name +
-                ", productID: " + productID +
-                ", unit: " + unit;
+        return "ID: " + id +
+                ", product " + name +
+                ", amount " + amount;
     }
 
     @Override
@@ -43,12 +25,24 @@ public class Product {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Product product = (Product) o;
-        return  Objects.equals(name, product.name) &&
-                Objects.equals(productID, product.productID);
+        return Objects.equals(name, product.name) &&
+               Objects.equals(id, product.id);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, productID, unit, availableQuality);
+        return Objects.hash(name, id, amount);
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public double getAmount() {
+        return amount;
     }
 }

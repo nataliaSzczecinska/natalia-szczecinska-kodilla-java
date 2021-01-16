@@ -1,34 +1,46 @@
 package com.kodilla.good.patterns.challenges.food2door;
 
-import java.util.*;
+import java.util.Objects;
 
-public class SupplierCompany implements Recipient {
+public class SupplierCompany implements InformationRecipient {
     private String companyName;
     private String companyAddress;
-    private String companyID;
+    private String companyId;
     private ProductDatabase productDatabase;
     private InformationService informationService;
 
     public SupplierCompany(String companyName,
                            String companyAddress,
-                           String companyID,
+                           String companyId,
                            ProductDatabase productDatabase,
                            InformationService informationService) {
         this.companyName = companyName;
         this.companyAddress = companyAddress;
-        this.companyID = companyID;
+        this.companyId = companyId;
         this.productDatabase = productDatabase;
         this.informationService = informationService;
     }
 
     @Override
-    public void getConfirmationOfOrder(CheckOrder checkOrder, ProductDatabase productDatabase, OrderRequest orderRequest) {
-        if (checkOrder.isOrderPossible(productDatabase,orderRequest)) {
-            informationService.sendConfirmationMessageToRecipient(this);
-            System.out.println("The order is send to supplier");
-        } else {
-            System.out.println("The order cannot be realised");
-        }
+    public String toString() {
+        return "ID " + companyId +
+                ", company " + companyName +
+                ", company address " + companyAddress;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        SupplierCompany that = (SupplierCompany) o;
+        return Objects.equals(companyName, that.companyName) &&
+                Objects.equals(companyAddress, that.companyAddress) &&
+                Objects.equals(companyId, that.companyId);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(companyName, companyAddress, companyId, productDatabase, informationService);
     }
 
     public String getCompanyName() {
@@ -39,8 +51,8 @@ public class SupplierCompany implements Recipient {
         return companyAddress;
     }
 
-    public String getCompanyID() {
-        return companyID;
+    public String getCompanyId() {
+        return companyId;
     }
 
     public ProductDatabase getProductDatabase() {
@@ -49,27 +61,5 @@ public class SupplierCompany implements Recipient {
 
     public InformationService getInformationService() {
         return informationService;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        SupplierCompany that = (SupplierCompany) o;
-        return Objects.equals(companyName, that.companyName) &&
-                Objects.equals(companyAddress, that.companyAddress) &&
-                Objects.equals(companyID, that.companyID);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(companyName, companyAddress, companyID, productDatabase, informationService);
-    }
-
-    @Override
-    public String toString() {
-        return  "Nme of company: " + companyName +
-                "\n company address: " + companyAddress +
-                "\n companyID: " + companyID;
     }
 }

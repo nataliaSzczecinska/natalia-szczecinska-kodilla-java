@@ -11,6 +11,23 @@ public class OrderRequest {
         this.shoppingList = shoppingList;
     }
 
+    public boolean isOrderPossible(OrderRequest orderRequest, ProductDatabase productDatabase) {
+        for (Product product : orderRequest.getShoppingList()) {
+            if (!(productDatabase.getProductMap().containsKey(product.getId()))) {
+                System.out.println("The product: \n" + product +
+                        " do not exist in database");
+                return false;
+            }
+            if (productDatabase.getProductMap().get(product.getId()).getAmount() < product.getAmount()) {
+                System.out.println("The available amount of product : \n" + product +
+                        " is not enough");
+                return false;
+            }
+        }
+        System.out.println("The order is possible");
+        return true;
+    }
+
     public User getUser() {
         return user;
     }
