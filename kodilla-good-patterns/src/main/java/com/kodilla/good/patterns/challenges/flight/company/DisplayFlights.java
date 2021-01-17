@@ -6,11 +6,11 @@ public class DisplayFlights {
 
     public void displayFlightDatabase(FlightDatabase flightDatabase) {
         System.out.println("***THE FLIGHT DATABASE***");
-        flightDatabase.getFlightFromToSet().stream().forEach(System.out::println);
+        flightDatabase.getFlightSet().stream().forEach(System.out::println);
         System.out.println();
     }
 
-    public void displayList(String startingText, List<FlightFromTo> list){
+    public void displayList(String startingText, List<Flight> list){
         if (list.isEmpty()) {
             System.out.println(startingText);
             System.out.println("There is no flight with given parameters");
@@ -22,7 +22,7 @@ public class DisplayFlights {
         }
     }
 
-    public void displayMap(String startingText, Map<FlightFromTo, List<FlightFromTo>> map) {
+    public void displayMap(String startingText, Map<Flight, List<Flight>> map) {
         if (map.isEmpty()) {
             System.out.println(startingText);
             System.out.println("There is no flight with given parameters");

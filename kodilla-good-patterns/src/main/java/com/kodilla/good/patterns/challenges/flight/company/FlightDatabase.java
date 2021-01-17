@@ -3,13 +3,13 @@ package com.kodilla.good.patterns.challenges.flight.company;
 import java.util.*;
 
 public class FlightDatabase {
-    private Set<FlightFromTo> flightFromToSet;
+    private Set<Flight> flightSet;
 
-    public FlightDatabase(Set<FlightFromTo> flightFromToSet) {
-        this.flightFromToSet = flightFromToSet;
+    public FlightDatabase(Set<Flight> flightSet) {
+        this.flightSet = flightSet;
     }
 
-    public Set<FlightFromTo> getFlightFromToSet() {
-        return flightFromToSet;
+    public Set<Flight> getFlightSet() {
+        return flightSet;
     }
 }
