@@ -1,5 +1,8 @@
 plugins {
     id 'java'
+    id 'org.springframework.boot' version '2.3.8RELEASE'
+    id 'io.spring.dependency-management' version '1.0.10RELEASE'
+
 }
 
 group = 'com.kodilla'
@@ -11,7 +14,9 @@ repositories {
 }
 
 dependencies {
-
+    implementation 'org.springframework.boot:spring-boot-starter'
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
 test {
