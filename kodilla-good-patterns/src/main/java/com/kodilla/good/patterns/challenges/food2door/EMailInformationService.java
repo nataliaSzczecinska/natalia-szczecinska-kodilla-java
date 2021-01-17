@@ -1,18 +1,20 @@
 package com.kodilla.good.patterns.challenges.food2door;
 
 public class EMailInformationService implements InformationService {
-    private String eMailAddress;
 
-    public EMailInformationService(String eMailAddress) {
-        this.eMailAddress = eMailAddress;
+    private String eMail;
+
+    public EMailInformationService(String eMail) {
+        this.eMail = eMail;
     }
 
     @Override
-    public void sendConfirmationMessage(InformationRecipient recipient) {
-        System.out.println("The confirmation is sent to " + recipient);
+    public void sendConfirmation(String message, OrderRequest orderRequest) {
+        System.out.println(message);
     }
 
-    public String getEMailAddress() {
-        return eMailAddress;
+    @Override
+    public String getAddress() {
+        return eMail;
     }
 }

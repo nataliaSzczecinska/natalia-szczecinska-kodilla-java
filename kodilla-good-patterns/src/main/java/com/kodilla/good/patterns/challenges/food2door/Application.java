@@ -4,74 +4,72 @@ import java.util.*;
 
 public class Application {
     public static void main (String [] args) {
-        Product product1 = new Product("apple", "01.001.001", 140.5);
-        Product product2 = new Product("pear", "01.002.001", 100.0);
-        Product product3 = new Product("banana", "01.003.001", 45.89);
-        Product product4 = new Product("orange", "01.004.001", 345.6);
-        Product product5 = new Product("tangerine", "01.005.001", 342.5);
-        Product product6 = new Product("cherry", "01.006.001", 123.9);
-        Product product7 = new Product("sweet cherry", "01.007.001", 543.7);
-        Product product8 = new Product("raspberry", "01.008.001", 647.0);
-        Product product9 = new Product("blueberry", "01.009.001", 123.4);
-        Product product10 = new Product("strawberry", "01.010.001", 231.5);
-
-        Map<String, Product> extraFoodShop = new HashMap<>();
-        Map<String, Product> healthyShop = new HashMap<>();
-        Map<String, Product> glutenFreeShop = new HashMap<>();
-
-        extraFoodShop.put(product1.getId(), product1);
-        extraFoodShop.put(product2.getId(), product2);
-        extraFoodShop.put(product3.getId(), product3);
-        healthyShop.put(product4.getId(), product4);
-        healthyShop.put(product5.getId(), product5);
-        healthyShop.put(product6.getId(), product6);
-        healthyShop.put(product7.getId(), product7);
-        glutenFreeShop.put(product8.getId(), product8);
-        glutenFreeShop.put(product9.getId(), product9);
-        glutenFreeShop.put(product10.getId(), product10);
-
-        SupplierCompany extraFoodShopCompany = new SupplierCompany("Extra Food Shop",
-                "00-123 Warsaw",
-                "EFS 01.129.00",
-                new ProductDatabase(extraFoodShop),
-                new EMailInformationService("extra.food.shop@extra.food.shop.com"));
-        SupplierCompany healthyShopCompany = new SupplierCompany("Healthy Shop",
-                "12-345 Krakow",
-                "HF 01.124.29",
-                new ProductDatabase(healthyShop),
-                new EMailInformationService("healthyfood@healthyfood.eu"));
-        SupplierCompany glutenFreeShopCompany = new SupplierCompany("Gluten-Free Shop",
-                "45-389 Poznan",
-                "GFS 02.392.10",
-                new ProductDatabase(glutenFreeShop),
-                new EMailInformationService("gluten-free@gluten-free-shop.com"));
+        Product product1 = new Product("apple", "01.001.001", 1.43);
+        Product product2 = new Product("pear", "01.002.001", 2.31);
+        Product product3 = new Product("banana", "01.003.001", 3.43);
+        Product product4 = new Product("orange", "01.004.001", 2.34);
+        Product product5 = new Product("tangerine", "01.005.001", 3.25);
+        Product product6 = new Product("cherry", "01.006.001", 13.92);
+        Product product7 = new Product("sweet cherry", "01.007.001", 15.75);
+        Product product8 = new Product("raspberry", "01.008.001", 8.90);
+        Product product9 = new Product("blueberry", "01.009.001", 25.00);
+        Product product10 = new Product("strawberry", "01.010.001", 7.99);
 
 
-        Map<String, SupplierCompany> supplierCompanyMap = new HashMap<>();
-        supplierCompanyMap.put(extraFoodShopCompany.getCompanyId(), extraFoodShopCompany);
-        supplierCompanyMap.put(healthyShopCompany.getCompanyId(), healthyShopCompany);
-        supplierCompanyMap.put(glutenFreeShopCompany.getCompanyId(), glutenFreeShopCompany);
+        List<Product> producentProductList = new ArrayList<>();
+        Set<Product> producentProductSet = new HashSet<>();
+        Map<String, Product> producentProductMap = new HashMap<>();
 
-        SupplierCompanyDatabase supplierCompanyDatabase = new SupplierCompanyDatabase(supplierCompanyMap);
+        producentProductList.add(product1);
+        producentProductList.add(product2);
+        producentProductList.add(product3);
 
-        ProductOrderService productOrderService = new ProductOrderService(supplierCompanyDatabase);
+        producentProductSet.add(product4);
+        producentProductSet.add(product5);
+        producentProductSet.add(product6);
+        producentProductSet.add(product7);
 
-        User user = new User ("Jan Kowalski",
+        producentProductMap.put(product8.getId(), product8);
+        producentProductMap.put(product9.getId(), product9);
+        producentProductMap.put(product10.getId(), product10);
+
+        Producent producent1 = new ExtraFoodShop("Extra Food Shop",
+                "00-123 Warsaw, Dluga Street 23",
+                new EMailInformationService("extra-food-shop@extra-food-shop.com"),
+                producentProductMap);
+        Producent producent2 = new HealthyShop("Healthy Shop",
+                "23-329 Krakow, Glowna Street 123A",
+                new EMailInformationService("healthy.shop@healthy-shop.eu"),
+                producentProductSet);
+        Producent producent3 = new GlutenFreeShop("Gluten Free Shop",
+                "28-212 Poznan, Szeroka Street 43/47",
+                new EMailInformationService("glutene.free@glutene-free-shop.com"),
+                producentProductList);
+
+        User user1 = new User("Jan Kowalski",
                 "jan.kowalski",
-                "JK 123456",
-                new EMailInformationService("jan.kowalski@op.pl"));
+                "JK 123456", new EMailInformationService("jan.kowalski@interia.pl"));
+        User user2 = new User("Anna Kowalczyk",
+                "annakowalczyk",
+                "AK 123213",
+                new EMailInformationService("a.kowalczyk@wp.pl"));
+        User user3 = new User("Adam Nowak",
+                "adamek1234",
+                "AN 948392",
+                new EMailInformationService("adamek1234@onet.pl"));
 
-        Product newProduct1 = new Product("apple", "01.001.001", 2.5);
-        Product newProduct7 = new Product("sweet cherry", "01.007.001", 1.5);
-        Product newProduct8 = new Product("raspberry", "01.008.001", 0.5);
+        List<Product> shoppingList1 = new ArrayList<>();
+        List<Product> shoppingList2 = new ArrayList<>();
+        List<Product> shoppingList3 = new ArrayList<>();
 
-        List<Product> shoppingList = new ArrayList<>();
-        shoppingList.add(newProduct1);
-        shoppingList.add(newProduct7);
-        shoppingList.add(newProduct8);
+        shoppingList1.add(product1);
+        shoppingList1.add(product10);
+        shoppingList2.add(product4);
+        shoppingList3.add(product8);
+        shoppingList3.add(product9);
 
-        OrderRequest orderRequest = new OrderRequest(user, shoppingList);
-
-        System.out.println(productOrderService.orderProcess(orderRequest));
+        System.out.println(producent1.process(new OrderRequest(user1, shoppingList3)));
+        System.out.println(producent2.process(new OrderRequest(user2, shoppingList2)));
+        System.out.println(producent3.process(new OrderRequest(user3, shoppingList1)));
     }
 }

@@ -5,12 +5,12 @@ import java.util.*;
 public class OrderDto {
     private User user;
     private List<Product> shoppingList;
-    private boolean isOrderBeRealised;
+    private boolean isOrdered;
 
-    public OrderDto(User user, List<Product> shoppingList, boolean isOrderBeRealised) {
+    public OrderDto(User user, List<Product> shoppingList, boolean isOrdered) {
         this.user = user;
         this.shoppingList = shoppingList;
-        this.isOrderBeRealised = isOrderBeRealised;
+        this.isOrdered = isOrdered;
     }
 
     public User getUser() {
@@ -21,20 +21,19 @@ public class OrderDto {
         return shoppingList;
     }
 
-    public boolean isOrderBeRealised() {
-        return isOrderBeRealised;
+    public boolean isOrdered() {
+        return isOrdered;
     }
 
     @Override
     public String toString() {
-        String text = user + ", the order ";
+        String text = "The order placed by" + user;
 
-        if (isOrderBeRealised) {
-            text += "will be realised";
+        if (isOrdered) {
+            text += " will be processed";
         } else {
-            text += "will not be realised";
+            text += " will not be processed";
         }
-
         return text;
     }
 }
