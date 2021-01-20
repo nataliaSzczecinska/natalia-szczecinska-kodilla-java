@@ -27,7 +27,7 @@ public class OrderDto {
 
     @Override
     public String toString() {
-        String text = "The order placed by" + user;
+        String text = "The order placed by " + user;
 
         if (isOrdered) {
             text += " will be processed";

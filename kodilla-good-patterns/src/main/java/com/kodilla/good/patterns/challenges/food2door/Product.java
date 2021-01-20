@@ -6,11 +6,14 @@ public class Product {
     private String id;
     private String name;
     private double price;
+    private Producer producer;
 
-    public Product(String id, String name, double price) {
+    public Product(String id, String name, double price, Producer producer) {
         this.id = id;
         this.name = name;
         this.price = price;
+        this.producer = producer;
+        producer.addProduct(this);
     }
 
     public String getId() {
@@ -25,6 +28,10 @@ public class Product {
         return price;
     }
 
+    public Producer getProducer() {
+        return producer;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -36,5 +43,11 @@ public class Product {
     @Override
     public int hashCode() {
         return Objects.hash(id, name, price);
+    }
+
+    @Override
+    public String toString() {
+        return name + ", price " + price +
+                ",\n" + producer;
     }
 }

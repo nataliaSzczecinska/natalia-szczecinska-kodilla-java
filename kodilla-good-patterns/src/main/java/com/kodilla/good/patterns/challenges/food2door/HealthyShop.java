@@ -2,36 +2,35 @@ package com.kodilla.good.patterns.challenges.food2door;
 
 import java.util.*;
 
-public class HealthyShop extends Producent {
+public class HealthyShop extends Producer {
 
-    private final CheckOrder checkOrder = new CheckOrderSet();
+    private final CheckOrder checkOrder = new CheckOrder();
     private Set<Product> productSet;
 
     public HealthyShop(String name,
                        String address,
-                       InformationService informationService,
                        Set<Product> productSet) {
-        super(name, address, informationService);
+        super(name, address);
         this.productSet = productSet;
     }
 
     @Override
-    public OrderDto process(OrderRequest orderRequest) {
-        if (checkOrder.isOrderPossible(orderRequest, this)) {
-            this.getInformationService().sendConfirmation(this.toString() + " is requested to realised the order", orderRequest);
-            return new OrderDto(orderRequest.getUser(),
-                    orderRequest.getShoppingList(),
-                    true);
+    public void addProduct(Product product) {
+        this.productSet.add(product);
+    }
+
+    @Override
+    public boolean process(Product product) {
+        if (checkOrder.isOrderPossible(product, this)) {
+            System.out.println("The order of " + product + " is send to " + this);
+            return true;
         }
-        return new OrderDto(orderRequest.getUser(), orderRequest.getShoppingList(), false);
+        System.out.println("There product " + product + " will not be realise by " + this);
+        return false;
     }
 
     @Override
     public Set<Product> getProductSet() {
         return productSet;
-    }
-
-    public CheckOrder getCheckOrder() {
-        return checkOrder;
     }
 }

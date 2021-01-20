@@ -2,28 +2,31 @@ package com.kodilla.good.patterns.challenges.food2door;
 
 import java.util.*;
 
-public class GlutenFreeShop extends Producent {
+public class GlutenFreeShop extends Producer {
 
-    private final CheckOrder checkOrder = new CheckOrderList();
+    private final CheckOrder checkOrder = new CheckOrder();
     private List<Product> productList;
 
     public GlutenFreeShop(String name,
                           String address,
-                          InformationService informationService,
                           List<Product> productList) {
-        super(name, address, informationService);
+        super(name, address);
         this.productList = productList;
     }
 
     @Override
-    public OrderDto process(OrderRequest orderRequest) {
-        if (checkOrder.isOrderPossible(orderRequest, this)) {
-            this.getInformationService().sendConfirmation(this.toString() + " is requested to realised the order", orderRequest);
-            return new OrderDto(orderRequest.getUser(),
-                    orderRequest.getShoppingList(),
-                    true);
+    public void addProduct(Product product) {
+        this.productList.add(product);
+    }
+
+    @Override
+    public boolean process(Product product) {
+        if (this.equals(product.getProducer())) {
+            System.out.println("The order of " + product + " is send to " + this);
+            return true;
         }
-        return new OrderDto(orderRequest.getUser(), orderRequest.getShoppingList(), false);
+        System.out.println("There product " + product + " will not be realise by " + this);
+        return false;
     }
 
     @Override
