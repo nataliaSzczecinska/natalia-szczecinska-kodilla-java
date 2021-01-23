@@ -3,7 +3,7 @@ package com.kodilla.good.patterns.challenges.order.service;
 import java.util.*;
 
 public class OrderServiceApp {
-    public static void main (String [] args) {
+    /*public static void main (String [] args) {
         User user = new User("Jan",
                 "Kowalski",
                 "janKowalski2000",
@@ -34,5 +34,5 @@ public class OrderServiceApp {
 
         System.out.println(productOrderService.process(new OrderRequesting(user, orderList),
                 productDatabase));
-    }
+    }*/
 }

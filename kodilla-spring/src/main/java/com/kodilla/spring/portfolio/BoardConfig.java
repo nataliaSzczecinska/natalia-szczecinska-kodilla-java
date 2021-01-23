@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Scope;
 @Configuration
 public class BoardConfig {
 
-    @Bean(name = "Create bean Task List")
+    @Bean(name = "taskList")
     @Scope("prototype")
     public TaskList getTasks() {
         return new TaskList();

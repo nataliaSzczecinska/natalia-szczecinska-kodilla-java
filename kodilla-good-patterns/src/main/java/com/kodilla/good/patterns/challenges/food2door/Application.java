@@ -3,7 +3,7 @@ package com.kodilla.good.patterns.challenges.food2door;
 import java.util.*;
 
 public class Application {
-    public static void main (String [] args) {
+    /*public static void main (String [] args) {
 
         List<Product> producerProductList = new ArrayList<>();
         Set<Product> producerProductSet = new HashSet<>();
@@ -58,5 +58,5 @@ public class Application {
         System.out.println(orderService.orderProcess(new OrderRequest(user1, shoppingList3)));
         System.out.println(orderService.orderProcess(new OrderRequest(user2, shoppingList2)));
         System.out.println(orderService.orderProcess(new OrderRequest(user3, shoppingList1)));
-    }
+    }*/
 }

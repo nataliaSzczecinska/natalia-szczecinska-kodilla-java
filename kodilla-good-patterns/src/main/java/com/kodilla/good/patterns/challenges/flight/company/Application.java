@@ -3,7 +3,7 @@ package com.kodilla.good.patterns.challenges.flight.company;
 import java.util.*;
 
 public class Application {
-    public static void main(String [] arg) {
+    /*public static void main(String [] arg) {
         Flight flight1 = new Flight("Athens","Madrid");
         Flight flight2 = new Flight("Athens","London");
         Flight flight3 = new Flight("Athens","Rome");
@@ -48,5 +48,5 @@ public class Application {
                 searchFlight.flightsWithOneChange("Rome",
                         "Athens",
                         flightDatabase));
-    }
+    }*/
 }
