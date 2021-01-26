@@ -4,10 +4,10 @@ import org.junit.jupiter.api.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class SimpleInvoiceTestSuite {
+public class SimpleInvoiceTestSuite {
 
     @Test
-    void testGetValueToPay() {
+    public void testGetValueToPay() {
         //Given
         SimpleInvoice invoice = new SimpleInvoice();
 
