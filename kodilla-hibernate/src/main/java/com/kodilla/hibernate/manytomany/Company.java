@@ -7,7 +7,7 @@ import java.util.*;
 @NamedNativeQuery(
         name = "Company.retrieveCompanyByThreeFirstLetter",
         query = "SELECT * FROM COMPANIES" +
-                "WHERE SUBSTRING (COMPANY_NAME , 1, 3) LIKE :START_AT",
+                " WHERE SUBSTRING (COMPANY_NAME , 1, 3) LIKE :START_AT",
         resultClass = Company.class
 )
 @Entity
