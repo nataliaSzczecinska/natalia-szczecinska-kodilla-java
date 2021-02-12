@@ -5,10 +5,10 @@ import javax.validation.constraints.NotNull;
 import java.util.*;
 
 
-/*@NamedQuery(
+@NamedQuery(
         name = "Employee.retrieveEmployeesByName",
         query = "From Employee Where lastname = :LASTNAME"
-)*/
+)
 @Entity
 @Table(name = "EMPLOYEES")
 public class Employee {
