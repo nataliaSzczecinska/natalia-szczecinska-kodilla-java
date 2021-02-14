@@ -1,0 +1,23 @@
+{
+    "carName": "Fabia",
+    "carBrand": "Skoda",
+    "carSeats": [
+    {
+        "fabric": "leather",
+        "colour": "white"
+    },
+    {
+        "fabric": "alcantara",
+        "colour": "black"
+    },
+    {
+        "fabric": "velour",
+        "colour": "green"
+    },
+    {
+        "fabric": "velour",
+        "colour": "brown"
+    }
+    ],
+    "engineSize" : 100
+}
