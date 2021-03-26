@@ -12,7 +12,7 @@ import java.util.*;
 )
 @NamedQuery(
         name = "Company.retrieveCompanyByNameFragment",
-        query =  "SELECT * FROM COMPANIES " +
+        query =  "FROM Company " +
                 "WHERE name LIKE :NAME_FRAGMENT "
 )
 @Entity

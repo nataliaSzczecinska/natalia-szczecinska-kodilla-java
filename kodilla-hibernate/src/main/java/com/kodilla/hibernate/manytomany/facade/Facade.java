@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.*;
 
+import static com.kodilla.hibernate.manytomany.facade.SQLCondition.sqlCondition;
+
 @Service
 public class Facade {
     @Autowired
@@ -17,12 +19,10 @@ public class Facade {
     EmployeeDao employeeDao;
 
     public List<Company> searchCompanyByNameFrament(String nameFragment){
-        nameFragment = ("%" + nameFragment + "%");
-        return companyDao.retrieveCompanyByNameFragment(nameFragment);
+        return companyDao.retrieveCompanyByNameFragment(sqlCondition(nameFragment));
     }
 
     public List<Employee> searchEmployeeByLastNameFragment(String lastNameFragment) {
-        lastNameFragment = ("%" + lastNameFragment + "%");
-        return employeeDao.retrieveEmployeesByLastnameFragment(lastNameFragment);
+        return employeeDao.retrieveEmployeesByLastnameFragment(sqlCondition(lastNameFragment));
     }
 }

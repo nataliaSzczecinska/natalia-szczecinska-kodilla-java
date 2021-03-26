@@ -37,10 +37,9 @@ public class FacadeTestSuite {
         int company2ID = company2.getId();
         companyDao.save(company3);
         int company3ID = company3.getId();
-        List<Company> companies = companyDao.retrieveCompanyByNameFragment("CDE");
 
         //Then
-        assertEquals(2, companies.size());
+        assertEquals(2, facade.searchCompanyByNameFrament("CDE").size());
 
         //Clean
         try {
@@ -62,11 +61,11 @@ public class FacadeTestSuite {
         //When
         employeeDao.save(employee1);
         int employee1Id = employee1.getId();
-        employeeDao.save(employee1);
+        employeeDao.save(employee2);
         int employee2Id = employee2.getId();
         employeeDao.save(employee3);
         int employee3Id = employee3.getId();
-        List<Employee> companies = employeeDao.retrieveEmployeesByLastnameFragment("sk");
+        List<Employee> companies = facade.searchEmployeeByLastNameFragment("sk");
 
         //Then
         assertEquals(2, companies.size());
