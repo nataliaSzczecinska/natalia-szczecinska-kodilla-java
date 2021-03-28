@@ -1,11 +1,17 @@
 # Kodilla Course Natalia Szczecińska
 
 ## General Information
-This repository includes projects have been realising during the Bootcamp Java Developer in Kodilla
+This is the first REST API exercise while Kodilla Course which based on SpringBoot, Java, PostgreSQL, Hibernate, and JUnit. It allows you to create, update and received data about tasks and it is conected with Trello account.
 
 ## Technologies
-JAVA version 11.0.9
-JAVAFX version 11.0.2
+JAVA
+JUnit
+Gradle
+Spring
+SpringBoot
+PostgreSQL
+MySQL database
+
  
 ## Setup
 Gradle -> Tasks -> application -> run
