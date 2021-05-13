@@ -1,0 +1,25 @@
+CREATE TABLE STATS (
+                           STAT_ID INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+                           STAT_DATE DATETIME NOT NULL,
+                           STAT VARCHAR(20) NOT NULL,
+                           VALUE INT(11) NOT NULL
+);
+
+SELECT * FROM STATS;
+
+CREATE VIEW BESTSELLERS_COUNT AS
+    SELECT COUNT(*) FROM BOOKS
+    WHERE BESTSELLER = true;
+
+SELECT * FROM bestsellers_count;
+
+(robocze: CREATE EVENT UpdateBestSellersEvent
+    ON SCHEDULE EVERY 1 MINUTE
+    DO
+        BEGIN
+            DECLARE AMOUNTS_OF_BESTSELLERS INT DEFAULT 0;
+            CALL UpdateBestsellers();
+            -- SET AMOUNTS_OF_BESTSELLERS;
+            INSERT INTO STATS (STAT_DATE, STAT, VALUE)
+                VALUES(CURDATE(), 'BESTSELLERS', AMOUNTS_OF_BESTSELLERS);
+        END;)

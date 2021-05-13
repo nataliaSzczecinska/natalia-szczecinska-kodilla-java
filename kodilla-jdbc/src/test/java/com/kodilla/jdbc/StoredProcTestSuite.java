@@ -1,12 +1,13 @@
 package com.kodilla.jdbc;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 
 public class StoredProcTestSuite {
     @Test
@@ -42,18 +43,19 @@ public class StoredProcTestSuite {
         //Then
         String sqlCheckHowManyNull = "SELECT COUNT(*) AS HOW_MANY FROM BOOKS WHERE BESTSELLER = null";
         String sqlCheckHowManyTrue = "SELECT COUNT(*) AS HOW_MANY FROM BOOKS WHERE BESTSELLER = true";
-        ResultSet rsNull = statement.executeQuery(sqlCheckHowManyNull);
-        ResultSet rsTrue = statement.executeQuery(sqlCheckHowManyTrue);
 
+        ResultSet rsNull = statement.executeQuery(sqlCheckHowManyNull);
         int howManyNull = -1;
         if (rsNull.next()) {
             howManyNull = rsNull.getInt("HOW_MANY");
         }
+
+        ResultSet rsTrue = statement.executeQuery(sqlCheckHowManyTrue);
         int howManyTrue = -1;
         if (rsTrue.next()) {
             howManyTrue = rsTrue.getInt("HOW_MANY");
         }
         assertEquals(0, howManyNull);
-        assertEquals(3, howManyTrue);
+        assertEquals(2, howManyTrue);
     }
 }
