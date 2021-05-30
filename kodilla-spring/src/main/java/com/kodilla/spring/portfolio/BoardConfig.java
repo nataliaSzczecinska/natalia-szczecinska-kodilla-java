@@ -17,7 +17,8 @@ public class BoardConfig {
     }
 
 
-    @Bean Board getBoard() {
+    @Bean
+    Board getBoard() {
         return new Board(getTasks(), getTasks(), getTasks());
     }
 

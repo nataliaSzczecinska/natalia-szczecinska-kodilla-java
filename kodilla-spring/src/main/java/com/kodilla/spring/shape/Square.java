@@ -1,6 +1,6 @@
 package com.kodilla.spring.shape;
 
-public class Square implements  Shape {
+public class Square implements Shape {
 
     @Override
     public String getShapeName() {

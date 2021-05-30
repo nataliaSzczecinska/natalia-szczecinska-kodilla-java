@@ -1,6 +1,7 @@
 package com.kodilla.patterns.prototype.library;
 
 import static org.junit.jupiter.api.Assertions.*;
+
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
@@ -34,7 +35,7 @@ public class LibraryTestSuite {
         assertNotNull(shallowClonedLibrary);
         assertNotNull(deepClonedLibrary);
         assertNotEquals(3, deepClonedLibrary.getBooks().size());
-        assertEquals(2,deepClonedLibrary.getBooks().size());
+        assertEquals(2, deepClonedLibrary.getBooks().size());
         assertEquals(3, shallowClonedLibrary.getBooks().size());
         assertArrayEquals(library.getBooks().toArray(), shallowClonedLibrary.getBooks().toArray());
     }

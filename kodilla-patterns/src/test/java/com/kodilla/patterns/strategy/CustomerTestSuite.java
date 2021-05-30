@@ -1,4 +1,5 @@
 package com.kodilla.patterns.strategy;
+
 import com.kodilla.patterns.strategy.predictor.AggressivePredictor;
 import org.junit.jupiter.api.Test;
 

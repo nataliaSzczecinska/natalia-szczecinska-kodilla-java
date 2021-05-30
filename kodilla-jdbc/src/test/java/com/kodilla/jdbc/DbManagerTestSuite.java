@@ -1,6 +1,7 @@
 package com.kodilla.jdbc;
 
 import org.junit.jupiter.api.Test;
+
 import java.sql.SQLException;
 import java.sql.*;
 
@@ -57,8 +58,8 @@ class DbManagerTestSuite {
 
         //Then
         int numberOfUsers = 0;
-        while(resultSet .next()) {
-            System.out.println(resultSet .getString("FIRSTNAME") + " " + resultSet.getString("LASTNAME") );
+        while (resultSet.next()) {
+            System.out.println(resultSet.getString("FIRSTNAME") + " " + resultSet.getString("LASTNAME"));
             numberOfUsers++;
         }
 
