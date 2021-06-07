@@ -27,7 +27,7 @@ public class CrudAppTestSuite {
 
     @AfterEach
     public void cleanUpAfterTest() {
-        driver.close();
+        driver.switchTo().alert().accept();
     }
 
     private String crateCrudAppTestTask() throws InterruptedException {
